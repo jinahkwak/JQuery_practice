@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show/hide기능</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script>
+        $(function(){
+            $('#showbtn').click(function(){
+                if($('#changebox2').val()== "1"){
+                    $('#displaydiv').show();
+                }else if($('#changebox2').val()== "2"){
+                    $("#displaydiv").slideDown();
+                }else if(('#changebox2').val()== "3"){
+                    $("#displaydiv").fadeIn();
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#hidebtn').click(function(){
+                if($('#changebox2').val()== "1"){
+                    $('#displaydiv').hide();
+                }
+                if($('#changebox2').val()== "2"){
+                    $('#displaydiv').slideUp();
+                }
+                if($('#changebox2').val()== "3"){
+                    $('#displaydiv').fadeOut();
+                }
+            });
+    </script>
+</head>
+<body>
+    <select id='changebox2'>
+        <option value="1">show/side</option>
+        <option value="2">slide</option>
+        <option value="3">fade</option>
+    </select>
+    <input type="button" id="showbtn" value="보여주기">
+    <input type="button" id="hidebtn" value="숨기기">
+    <div style="display:none;" id="displaydiv">
+        <span>1번 켰다</span>
+        <span>2번 켰다</span>
+        <span>3번 켰다</span>
+
+    </div>
+</body>
+</html>
