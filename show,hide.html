@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show/hide기능</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>  
     <script>
         $(function(){
             $('#showbtn').click(function(){
@@ -12,24 +12,24 @@
                     $('#displaydiv').show();
                 }else if($('#changebox2').val()== "2"){
                     $("#displaydiv").slideDown();
-                }else if(('#changebox2').val()== "3"){
+                }else if($('#changebox2').val()== "3"){
                     $("#displaydiv").fadeIn();
                 }
             });
         });
     </script>
     <script>
-        $('#hidebtn').click(function(){
+        $(function(){
+            $('#hidebtn').click(function(){
                 if($('#changebox2').val()== "1"){
                     $('#displaydiv').hide();
-                }
-                if($('#changebox2').val()== "2"){
+                }else if($('#changebox2').val()== "2"){
                     $('#displaydiv').slideUp();
-                }
-                if($('#changebox2').val()== "3"){
+                }else if($('#changebox2').val()== "3"){
                     $('#displaydiv').fadeOut();
                 }
             });
+        });
     </script>
 </head>
 <body>
@@ -44,7 +44,6 @@
         <span>1번 켰다</span>
         <span>2번 켰다</span>
         <span>3번 켰다</span>
-
     </div>
 </body>
 </html>
