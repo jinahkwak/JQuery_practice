@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞히기 게임</title>
+    <!--css 표시-->
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+
+        body {
+            width: 50%;
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
+
+        .lastResult {
+            color: white;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>숫자 맞히기 게임</h1>
+
+    <p>1~100까지 숫자를 넣으세요. 10번의 기회가 있습니다.</p>
+
+    <div class="form">
+        <label for="guessField">Enter a guess: </label>
+        <input type="text" id="guessField" class="guessField">
+        <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+    </div>
+
+    <script>
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        var guesses = document.querySelector('.guesses');
+        var lastResult = document.querySelector('.lastResult');
+        var lowOrHi = document.querySelector('.lowOrHi');
+
+        var guessSubmit = document.querySelector('.guessSubmit');
+        var guessField = document.querySelector('.guessField');
+
+        var guessCount = 1;
+        var resetButton;
+
+        function checkGuess() {
+            var userGuess = Number(guessField.value);
+            if (guessCount === 1) {
+                guesses.textContent = '이전 추측: ';
+            }
+            guesses.textContent += userGuess + ' ';
+
+            if (userGuess === randomNumber) {
+                lastResult.textContent = '정답!!!';
+                lastResult.style.backgroundColor = 'green';
+                lowOrHi.textContent = '';
+                setGameOver();
+            } else if (guessCount === 10) {
+                lastResult.textContent = '!!!GAME OVER!!!';
+                setGameOver();
+            } else {
+                lastResult.textContent = '땡!';
+                lastResult.style.backgroundColor = 'red';
+                if (userGuess < randomNumber) {
+                    lowOrHi.textContent = '너무 작아요';
+                } else if (userGuess > randomNumber) {
+                    lowOrHi.textContent = '너무 커요';
+                }
+            }
+
+            guessCount++;
+            guessField.value = '';
+            guessField.focus();
+        }
+        // guessSubmit 버튼에 이벤트 리스너 추가하는 코드
+        guessSubmit.addEventListener('click', checkGuess);
+    </script>
+</body>
+
+</html>
